@@ -3,7 +3,9 @@ from main import proc_frm, ext_kp
 from gesture_sim import sim
 from video_annotat import annotate_frame
 
-inp_img = cv2.imread('input.jpg')
+inp_img = cv2.imread('test.jpg')
+if inp_img is None:
+    raise ValueError("The image failed to load. Check the file path and file integrity.")
 proc_img, inp_res = proc_frm(inp_img)
 inp_kp = ext_kp(inp_res)
 
