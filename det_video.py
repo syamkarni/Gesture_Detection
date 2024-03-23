@@ -11,7 +11,7 @@ inp_kp = ext_kp(inp_res)
 
 cap = cv2.VideoCapture('video.mp4')
 
-my_thrsh = 0.05
+my_thrsh = 1
 
 while cap.isOpened():
     ret, frm = cap.read()
@@ -23,7 +23,8 @@ while cap.isOpened():
 
     s = sim(inp_kp, frm_kp)
     
-    detect_flag = True
+    # detect_flag = True
+    detect_flag =s < my_thrsh
     if not inp_kp and not frm_kp:
         detect_flag = False
     p_frm = annotate_frame(p_frm, detect_flag)
