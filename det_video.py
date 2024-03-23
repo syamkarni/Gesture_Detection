@@ -22,8 +22,10 @@ while cap.isOpened():
     frm_kp = ext_kp(frm_res)
 
     s = sim(inp_kp, frm_kp)
-    detect_flag = s < my_thrsh
-
+    
+    detect_flag = True
+    if not inp_kp and not frm_kp:
+        detect_flag = False
     p_frm = annotate_frame(p_frm, detect_flag)
     cv2.imshow('Detection', p_frm)
 
